@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Polygon Pedagogs</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=4" />
+</head>
+<body>
+
+  <header>
+    <div class="nav-wrap" id="navWrap">
+      <a class="logo" href="index.html" aria-label="Polygon Pedagogs home">
+        <img src="assets/images/logo.png?v=4" alt="Polygon Pedagogs" width="220" height="58" />
+      </a>
+      <button class="mobile-toggle" onclick="toggleMenu()">Menu</button>
+      <nav aria-label="Main navigation">
+        <a href="who-we-support.html" class="">Who we support</a>
+<a href="services.html" class="">Services</a>
+<a href="schools-councils.html" class="">Schools & Councils</a>
+<a href="safeguarding.html" class="">Our Policies</a>
+<a href="referral-process.html" class="">Referral Process</a>
+<a href="contact.html" class="">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-primary" onclick="openModal('referral')">Make a Referral</button>
+        <button class="btn btn-secondary" onclick="openModal('parent')">Parent Enquiry</button>
+      </div>
+    </div>
+  </header>
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">UK education support provider</div>
+          <h1>Personalised tuition and alternative education support.</h1>
+          <p class="lead">
+            Polygon Pedagogs provides safe, structured and personalised tuition for children and young people who need flexible education provision, including learners who are out of school, awaiting placement, home educated, excluded, medically unable to attend, or requiring SEND-informed support.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="openModal('referral')">Make a Referral</button>
+            <button class="btn btn-secondary" onclick="openModal('parent')">Parent Enquiry</button>
+            <a class="btn btn-outline" href="services.html">Explore Services</a>
+          </div>
+          <div class="hero-checks">
+            <div class="check"><span class="tick">✓</span>SEND-informed tuition, including ADHD, ASD and SPD</div>
+            <div class="check"><span class="tick">✓</span>Safeguarding-focused provision</div>
+            <div class="check"><span class="tick">✓</span>Attendance and progress reporting</div>
+            <div class="check"><span class="tick">✓</span>Online, in-person and hybrid support</div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Homepage hero summary card">
+          <div class="visual-panel">
+            <h3>Education support designed around the learner.</h3>
+            <p>For schools, councils, SEND teams, parents, carers and education professionals.</p>
+          </div>
+          <div class="mini-stats">
+            <div class="mini-stat"><strong>English</strong><span>Core subject</span></div>
+            <div class="mini-stat"><strong>Maths</strong><span>Core subject</span></div>
+            <div class="mini-stat"><strong>Science</strong><span>Core subject</span></div>
+          </div>
+          <div class="guidance">
+            <strong>Next step:</strong> Replace this professional visual panel with a calm, high-quality tutoring image or keep it as a clean branded graphic.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Trust indicators">
+      <div class="trust-intro">
+        <h2>Quick reassurance for professional referrers</h2>
+        <p>Key trust signals are visible immediately for schools, councils, SEND teams and families.</p>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">SEND-informed</div>
+        <div class="trust-item">Safeguarding-led</div>
+        <div class="trust-item">DBS checks</div>
+        <div class="trust-item">Tutor vetting</div>
+        <div class="trust-item">Progress reports</div>
+        <div class="trust-item">Flexible delivery</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head center">
+          <div class="section-label">Website overview</div>
+          <h2>A clearer multi-page structure for professional visitors.</h2>
+          <p>The homepage now introduces the service quickly, while detailed content is separated into focused pages for learners, services, professional referrers, safeguarding, process and contact.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="icon">✦</div><h3>Who we support</h3><p>Learners with SEND, pupils out of school, young people awaiting placement, excluded pupils, learners with anxiety or medical needs, and home-educated learners.</p><div class="hero-actions" style="margin-top:16px;"><a class="btn btn-secondary" href="who-we-support.html">View page</a></div></article>
+          <article class="card"><div class="icon">S</div><h3>Our services</h3><p>SEND tuition, alternative provision, one-to-one tuition, online tuition, in-person tuition, GCSE preparation and Functional Skills support.</p><div class="hero-actions" style="margin-top:16px;"><a class="btn btn-secondary" href="services.html">View services</a></div></article>
+          <article class="card"><div class="icon">✓</div><h3>Schools & Councils</h3><p>A dedicated page for local authorities, schools, SEND teams, inclusion teams, virtual schools and education professionals making referrals.</p><div class="hero-actions" style="margin-top:16px;"><a class="btn btn-secondary" href="schools-councils.html">For referrers</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container split">
+        <div>
+          <div class="section-label">Outcomes & impact</div>
+          <h2>Focused on confidence, progress and re-engagement.</h2>
+          <p>Progress is not the same for every learner. Support is planned around starting point, confidence, attendance, communication needs, academic gaps and referral goals.</p>
+          <div class="hero-actions" style="margin-top:22px;"><a class="btn btn-primary" href="referral-process.html">See referral process</a><button class="btn btn-secondary" onclick="openModal('referral')">Make a Referral</button></div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-list">
+            <div class="check"><span class="tick">✓</span>Academic progress and subject confidence</div>
+            <div class="check"><span class="tick">✓</span>Consistent routines and attendance monitoring</div>
+            <div class="check"><span class="tick">✓</span>SEND-informed teaching adjustments</div>
+            <div class="check"><span class="tick">✓</span>Progress summaries and next-step recommendations</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head center">
+          <div class="section-label">Partnership</div>
+          <h2>Working with schools, councils, families and tutors.</h2>
+          <p>Separate calls to action help professional referrers, parents and tutor applicants find the right route quickly.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="audience-card highlight"><h3>For Schools & Councils</h3><p>Referral review, tutor matching, attendance updates and progress reporting for learners needing flexible education support.</p><ul><li>Schools and academies</li><li>Local authorities</li><li>SEND and inclusion teams</li><li>Virtual schools and AP teams</li></ul><button class="btn btn-secondary" onclick="openModal('referral')">Professional Referral</button></article>
+          <article class="audience-card"><h3>For Parents & Carers</h3><p>Personalised tuition for children who need academic support, confidence-building, SEND-informed teaching or flexible education.</p><ul><li>English, Maths and Science</li><li>GCSE preparation</li><li>Catch-up learning</li><li>Home education support</li></ul><button class="btn btn-primary" onclick="openModal('parent')">Parent Enquiry</button></article>
+          <article class="audience-card"><h3>For Tutors</h3><p>We work with reliable, professional and caring tutors who understand safeguarding, personalised learning and clear communication.</p><ul><li>Online and in-person roles</li><li>Safeguarding expectations</li><li>Session reporting</li><li>Professional standards</li></ul><a class="btn btn-secondary" href="tutor-recruitment.html">Become a Tutor</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Need education support for a learner?</h2>
+      <p>Whether you are a school, local authority, SEND team, parent, carer or education professional, Polygon Pedagogs can help you explore suitable tuition or alternative education support.</p>
+      <div class="hero-actions" style="justify-content:center;margin-bottom:0;">
+        <button class="btn btn-secondary" onclick="openModal('referral')">Make a School or Council Referral</button>
+        <button class="btn btn-outline" style="color:white;border-color:rgba(255,255,255,0.4);" onclick="openModal('parent')">Make a Parent Enquiry</button>
+        <a class="btn btn-outline" style="color:white;border-color:rgba(255,255,255,0.4);" href="contact.html">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html" aria-label="Polygon Pedagogs home">
+          <img src="assets/images/logo.png?v=4" alt="Polygon Pedagogs" width="220" height="58" />
+        </a>
+        <p>Personalised tuition and alternative education support for children and young people who require flexible, safe and structured learning provision.</p>
+        <p style="margin-top:14px;"><strong>Area covered:</strong> [Insert Location]<br><strong>Delivery:</strong> Online, in-person and hybrid<br><strong>Subjects:</strong> English, Maths, Science and more</p>
+      </div>
+      <div>
+        <h4>Website</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="who-we-support.html">Who we support</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Notice</a></li>
+          <li><a href="cookies.html">Cookie Notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#send">SEND Tuition</a></li>
+          <li><a href="services.html#alternative-provision">Alternative Provision</a></li>
+          <li><a href="services.html#one-to-one">One-to-One Tuition</a></li>
+          <li><a href="services.html#online">Online Tuition</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For Referrers</h4>
+        <ul>
+          <li><a href="schools-councils.html">Schools & Councils</a></li>
+          <li><a href="referral-process.html">Referral Process</a></li>
+          <li><a href="javascript:void(0)" onclick="openModal('referral')">Make a Referral</a></li>
+          <li><a href="contact.html">Speak to Our Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Safeguarding</h4>
+        <ul>
+          <li><a href="safeguarding.html">Safeguarding Statement</a></li>
+          <li><a onclick="openModal('safeguarding')" href="javascript:void(0)">Report a Concern</a></li>
+          <li><a href="safeguarding.html#safer-recruitment">Safer Recruitment</a></li>
+          <li><a href="safeguarding.html#policies">Policy Areas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>General: [Insert Email]</li>
+          <li>Referrals: [Insert Email]</li>
+          <li>Safeguarding: [Insert Email]</li>
+          <li>Phone: [Insert Number]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© Polygon Pedagogs. Website draft for review.</span>
+      <span>Safeguarding is central to our work. Tutors are expected to follow safer recruitment, professional conduct and safeguarding procedures.</span>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <h3 id="modalTitle">Example form</h3>
+          <p id="modalIntro" style="color:var(--muted);margin-top:8px;">This is a website form preview.</p>
+        </div>
+        <button class="close-modal" onclick="closeModal()">×</button>
+      </div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

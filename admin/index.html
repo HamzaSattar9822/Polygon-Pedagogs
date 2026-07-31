@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Inbox | Polygon Pedagogs</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png?v=4" />
+</head>
+<body class="admin-body">
+  <div id="loginView" class="admin-login">
+    <form id="loginForm" class="admin-login-card">
+      <div class="admin-login-brand">
+        <img src="/assets/images/logo.png?v=4" alt="Polygon Pedagogs" width="220" height="58" />
+      </div>
+      <h1>Admin inbox</h1>
+      <p>Sign in to review referrals, enquiries and tutor applications.</p>
+      <label>Username<input name="username" autocomplete="username" required /></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required /></label>
+      <p id="loginError" class="admin-error" hidden></p>
+      <button class="btn btn-primary" type="submit">Sign in</button>
+    </form>
+  </div>
+
+  <div id="appView" class="admin-app" hidden>
+    <header class="admin-top">
+      <div class="admin-top-brand">
+        <img src="/assets/images/logo.png?v=4" alt="Polygon Pedagogs" width="180" height="47" />
+        <span>Submission inbox</span>
+      </div>
+      <button class="btn btn-outline" type="button" id="logoutBtn">Sign out</button>
+    </header>
+
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <div class="admin-filters">
+          <label>Type
+            <select id="filterType">
+              <option value="">All types</option>
+              <option value="referral">Referrals</option>
+              <option value="parent">Parent enquiries</option>
+              <option value="tutor">Tutor applications</option>
+              <option value="contact">Contact</option>
+            </select>
+          </label>
+          <label>Status
+            <select id="filterStatus">
+              <option value="">All statuses</option>
+              <option value="new">New</option>
+              <option value="in_progress">In progress</option>
+              <option value="closed">Closed</option>
+            </select>
+          </label>
+          <label>Search
+            <input id="filterQ" type="search" placeholder="Name, email or ID" />
+          </label>
+          <button class="btn btn-secondary" type="button" id="refreshBtn">Refresh</button>
+        </div>
+        <ul id="submissionList" class="admin-list"></ul>
+      </aside>
+
+      <main class="admin-detail" id="detailPane">
+        <div class="admin-empty">Select a submission to view details.</div>
+      </main>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

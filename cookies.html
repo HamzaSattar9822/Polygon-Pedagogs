@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Notice | Polygon Pedagogs</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=4" />
+</head>
+<body>
+
+  <header>
+    <div class="nav-wrap" id="navWrap">
+      <a class="logo" href="index.html" aria-label="Polygon Pedagogs home">
+        <img src="assets/images/logo.png?v=4" alt="Polygon Pedagogs" width="220" height="58" />
+      </a>
+      <button class="mobile-toggle" onclick="toggleMenu()">Menu</button>
+      <nav aria-label="Main navigation">
+        <a href="who-we-support.html">Who we support</a>
+        <a href="services.html">Services</a>
+        <a href="schools-councils.html">Schools & Councils</a>
+        <a href="safeguarding.html">Our Policies</a>
+        <a href="referral-process.html">Referral Process</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-primary" onclick="openModal('referral')">Make a Referral</button>
+        <button class="btn btn-secondary" onclick="openModal('parent')">Parent Enquiry</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="page-hero">
+      <div class="container">
+        <div>
+          <div class="breadcrumb"><a href="index.html">Home</a> / Cookie Notice</div>
+          <h1>Cookie Notice.</h1>
+          <p>This website uses a small number of essential cookies and local storage values needed to operate securely.</p>
+        </div>
+        <aside class="page-panel">
+          <h3>Related</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Notice</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="policy-list">
+          <div class="policy-item">
+            <h3>Essential cookies</h3>
+            <p>When staff sign in to the admin inbox, an HTTP-only session cookie is set so the browser can stay signed in securely. This cookie is required for the admin area to work.</p>
+          </div>
+          <div class="policy-item">
+            <h3>Local storage</h3>
+            <p>We store a simple consent flag in local storage after you accept the cookie banner, so the banner does not keep appearing on every visit.</p>
+          </div>
+          <div class="policy-item">
+            <h3>Analytics and marketing</h3>
+            <p>This draft site does not currently load third-party analytics or advertising cookies. If those are added later, this notice should be updated and additional consent obtained where required.</p>
+          </div>
+          <div class="policy-item">
+            <h3>Managing cookies</h3>
+            <p>You can clear cookies and local storage through your browser settings. Clearing the admin session cookie will sign you out of the admin inbox.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html" aria-label="Polygon Pedagogs home">
+          <img src="assets/images/logo.png?v=4" alt="Polygon Pedagogs" width="220" height="58" />
+        </a>
+        <p>Personalised tuition and alternative education support for children and young people who require flexible, safe and structured learning provision.</p>
+        <p style="margin-top:14px;"><strong>Area covered:</strong> [Insert Location]<br><strong>Delivery:</strong> Online, in-person and hybrid<br><strong>Subjects:</strong> English, Maths, Science and more</p>
+      </div>
+      <div>
+        <h4>Website</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="who-we-support.html">Who we support</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Notice</a></li>
+          <li><a href="cookies.html">Cookie Notice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#send">SEND Tuition</a></li>
+          <li><a href="services.html#alternative-provision">Alternative Provision</a></li>
+          <li><a href="services.html#one-to-one">One-to-One Tuition</a></li>
+          <li><a href="services.html#online">Online Tuition</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For Referrers</h4>
+        <ul>
+          <li><a href="schools-councils.html">Schools & Councils</a></li>
+          <li><a href="referral-process.html">Referral Process</a></li>
+          <li><a href="javascript:void(0)" onclick="openModal('referral')">Make a Referral</a></li>
+          <li><a href="contact.html">Speak to Our Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Safeguarding</h4>
+        <ul>
+          <li><a href="safeguarding.html">Safeguarding Statement</a></li>
+          <li><a onclick="openModal('safeguarding')" href="javascript:void(0)">Report a Concern</a></li>
+          <li><a href="safeguarding.html#safer-recruitment">Safer Recruitment</a></li>
+          <li><a href="safeguarding.html#policies">Policy Areas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>General: [Insert Email]</li>
+          <li>Referrals: [Insert Email]</li>
+          <li>Safeguarding: [Insert Email]</li>
+          <li>Phone: [Insert Number]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© Polygon Pedagogs.</span>
+      <span>Safeguarding is central to our work.</span>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <h3 id="modalTitle">Example form</h3>
+          <p id="modalIntro" style="color:var(--muted);margin-top:8px;">This is a website form preview.</p>
+        </div>
+        <button class="close-modal" onclick="closeModal()">×</button>
+      </div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
