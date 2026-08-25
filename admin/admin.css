@@ -6,6 +6,31 @@
   font-family: Georgia, "Times New Roman", serif;
 }
 
+a,
+button,
+[role="button"],
+[onclick],
+summary,
+label,
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="file"],
+input[type="date"],
+input[type="image"] {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+a[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 .admin-login {
   min-height: 100vh;
   display: grid;

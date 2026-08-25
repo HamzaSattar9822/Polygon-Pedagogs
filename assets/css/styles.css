@@ -39,6 +39,31 @@
       text-decoration: none;
     }
 
+    a,
+    button,
+    [role="button"],
+    [onclick],
+    summary,
+    label,
+    select,
+    input[type="checkbox"],
+    input[type="radio"],
+    input[type="submit"],
+    input[type="button"],
+    input[type="reset"],
+    input[type="file"],
+    input[type="date"],
+    input[type="image"] {
+      cursor: pointer;
+    }
+
+    button:disabled,
+    input:disabled,
+    select:disabled,
+    a[aria-disabled="true"] {
+      cursor: not-allowed;
+    }
+
     .top-note {
       background: var(--navy);
       color: var(--white);
@@ -884,6 +909,7 @@
       box-shadow: 0 24px 70px rgba(0,0,0,0.28);
       max-height: 90vh;
       overflow: auto;
+      font-size: 1rem;
     }
 
     .modal-head {
@@ -898,6 +924,12 @@
       color: var(--navy);
       font-size: 1.6rem;
       line-height: 1.1;
+    }
+
+    .modal-head p,
+    #modalIntro {
+      font-size: 1rem;
+      line-height: 1.55;
     }
 
     .close-modal {
@@ -925,8 +957,10 @@
       grid-column: 1 / -1;
     }
 
-    label {
-      font-size: 0.9rem;
+    label,
+    .checkbox-line,
+    .privacy-check {
+      font-size: 1rem;
       font-weight: 750;
       color: var(--navy);
     }
@@ -937,6 +971,7 @@
       border-radius: 14px;
       padding: 12px 13px;
       font-family: inherit;
+      font-size: 1rem;
       color: var(--text);
       background: #fff;
     }
@@ -955,7 +990,7 @@
       border-top: 1px solid var(--border);
       color: var(--navy);
       font-weight: 900;
-      font-size: 1.03rem;
+      font-size: 1rem;
     }
 
     .checkbox-grid {
@@ -973,8 +1008,8 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       background: #fff;
-      font-size: 0.92rem;
       color: var(--text);
+      font-weight: 600;
     }
 
     .checkbox-line input {
@@ -991,7 +1026,8 @@
       border-radius: 14px;
       background: var(--cream);
       border: 1px solid #eadfc9;
-      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
     }
 
     .privacy-check input {
@@ -1006,7 +1042,7 @@
       border-radius: 14px;
       padding: 12px;
       margin: 12px 0 16px;
-      font-size: 0.92rem;
+      font-size: 1rem;
     }
 
     .form-note {
@@ -1016,7 +1052,7 @@
       border-radius: 14px;
       padding: 12px;
       margin: 16px 0;
-      font-size: 0.92rem;
+      font-size: 1rem;
     }
 
     .submit-row {
@@ -1025,6 +1061,11 @@
       flex-wrap: wrap;
       justify-content: flex-end;
       margin-top: 16px;
+    }
+
+    .modal .btn,
+    form .btn {
+      font-size: 1rem;
     }
 
     @media (max-width: 1180px) {
@@ -1344,19 +1385,65 @@ nav a.active {
 }
 
 .policy-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 22px;
-  padding: 20px;
+  padding: 20px 22px;
+  box-shadow: 0 8px 22px rgba(11, 37, 69, 0.045);
+  transition: 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.policy-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(11, 37, 69, 0.08);
+  border-color: #c5dde4;
 }
 
 .policy-item h3 {
   color: var(--navy);
   margin-bottom: 6px;
+  font-size: 1.08rem;
 }
 
 .policy-item p {
   color: var(--muted);
+  margin: 0;
+}
+
+.policy-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--soft-blue);
+  color: var(--navy);
+  border: 1px solid #cde3ea;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.policy-item:hover .policy-link {
+  background: #dceff4;
+}
+
+@media (max-width: 760px) {
+  .policy-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .policy-link {
+    width: 100%;
+  }
 }
 
 footer .footer-grid {
@@ -1385,7 +1472,7 @@ footer .footer-grid {
   margin: 12px 0 0;
   padding: 12px 14px;
   border: 1px solid transparent;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .form-status--success {
@@ -1430,4 +1517,18 @@ footer .footer-grid {
 
 .cookie-banner .btn {
   flex: 0 0 auto;
+}
+
+.page-hero .container.hero-single {
+  grid-template-columns: 1fr;
+}
+
+.cards.cards-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 760px) {
+  .cards.cards-2 {
+    grid-template-columns: 1fr;
+  }
 }

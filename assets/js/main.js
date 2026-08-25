@@ -21,25 +21,13 @@ const templates = {
     title: 'Make a Referral',
     intro: 'Professional referral form for schools, councils, SEND teams, alternative provision teams and education professionals.',
     html: `
-      <div class="urgent-note"><strong>Safeguarding note:</strong> This form is not for emergencies. If a child is in immediate danger, call 999. For urgent safeguarding concerns, contact the Designated Safeguarding Lead using the safeguarding contact details.</div>
-      <div class="form-note">This form should collect enough information to review suitability, plan provision and arrange a safe first step. Sensitive information should only be shared where necessary and through a secure system.</div>
       <form data-form="referral" enctype="multipart/form-data">
         <div class="form-grid">
-          <div class="section-title-small">1. Referrer details</div>
-          <div class="field"><label>Referrer full name *</label><input name="referrer_name" required placeholder="Full name"></div>
-          <div class="field"><label>Job title / role *</label><input name="job_title" required placeholder="SENCO, AP Lead, Social Worker..."></div>
-          <div class="field"><label>Organisation *</label><input name="organisation" required placeholder="School / Council / Virtual School / Team"></div>
-          <div class="field"><label>Work email *</label><input name="work_email" required type="email" placeholder="name@organisation.org.uk"></div>
-          <div class="field"><label>Phone number *</label><input name="phone" required placeholder="Contact number"></div>
-          <div class="field"><label>Referral source *</label><select name="referral_source" required><option value="">Select one</option><option>School</option><option>Local authority</option><option>SEND team</option><option>Alternative provision team</option><option>Virtual school</option><option>Charity / funding organisation</option><option>Parent / carer</option><option>Other professional</option></select></div>
-
-          <div class="section-title-small">2. Learner information</div>
+          <div class="section-title-small">1. Learner information</div>
           <div class="field"><label>Learner initials or reference ID *</label><input name="learner_ref" required placeholder="Use initials or secure reference ID"></div>
           <div class="field"><label>Year group / age *</label><input name="year_group" required placeholder="e.g. Year 8 / age 13"></div>
-          <div class="field"><label>Current education status *</label><select name="education_status" required><option value="">Select one</option><option>In school but needs additional support</option><option>Not currently attending school</option><option>Awaiting placement</option><option>Excluded or at risk of exclusion</option><option>Home educated</option><option>Medical needs / unable to attend</option><option>Other</option></select></div>
-          <div class="field"><label>Preferred delivery method</label><select name="delivery_method"><option>Online</option><option>In-person</option><option>Hybrid</option><option>Not sure yet</option></select></div>
 
-          <div class="section-title-small">3. Support required</div>
+          <div class="section-title-small">2. Support required</div>
           <div class="checkbox-grid">
             <label class="checkbox-line"><input type="checkbox" name="support_types" value="SEND tuition"> SEND tuition</label>
             <label class="checkbox-line"><input type="checkbox" name="support_types" value="Alternative provision"> Alternative provision</label>
@@ -59,19 +47,9 @@ const templates = {
           <div class="field"><label>Requested hours per week</label><input name="hours_per_week" placeholder="e.g. 5 hours per week"></div>
           <div class="field"><label>Preferred start date</label><input name="preferred_start" type="date"></div>
 
-          <div class="section-title-small">4. SEND, needs and suitability information</div>
-          <div class="field"><label>EHCP status</label><select name="ehcp_status"><option>Unknown / not applicable</option><option>EHCP in place</option><option>EHCP in progress</option><option>No EHCP</option></select></div>
+          <div class="section-title-small">3. SEND, needs and suitability information</div>
           <div class="field"><label>Main area of need</label><select name="main_need"><option>Not sure / to be discussed</option><option>ADHD</option><option>ASD / Autism</option><option>Sensory Processing Difficulties / SPD</option><option>SEMH</option><option>Speech, language and communication needs</option><option>Dyslexia / literacy difficulty</option><option>Severe or complex needs</option><option>Medical needs</option><option>Other</option></select></div>
           <div class="field full"><label>Brief learner profile</label><textarea name="learner_profile" placeholder="Please summarise strengths, barriers to learning, SEND needs, communication needs, sensory needs, triggers, routines or adjustments that may help."></textarea></div>
-
-          <div class="section-title-small">5. Safeguarding, risk and attendance</div>
-          <div class="field"><label>Are there known safeguarding or welfare concerns?</label><select name="safeguarding_concerns"><option>No / not known</option><option>Yes - details to be shared securely</option><option>Unsure</option></select></div>
-          <div class="field"><label>Risk assessment available?</label><select name="risk_assessment"><option>No / not yet</option><option>Yes - can upload</option><option>Required before starting</option><option>Not applicable</option></select></div>
-          <div class="field full"><label>Key risk or attendance information</label><textarea name="risk_info" placeholder="Please include relevant attendance barriers, behaviour considerations, medical considerations, lone-working considerations or known risks. Do not include unnecessary sensitive details."></textarea></div>
-
-          <div class="section-title-small">6. Documents and consent</div>
-          <div class="field full"><label>Secure document upload</label><input type="file" name="documents" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"></div>
-          <div class="form-note field full">Suggested documents: EHCP, IEP, pupil passport, risk assessment, attendance record, school report, medical education plan or relevant professional summary. Upload only what is necessary.</div>
         </div>
         <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" value="true" required> <span>I confirm that I have authority to share this information for the purpose of reviewing and arranging educational provision, and I understand that Polygon Pedagogs will process the information in line with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
         <div class="form-status" hidden></div>
@@ -83,81 +61,51 @@ const templates = {
   },
   parent: {
     title: 'Parent / Carer Enquiry',
-    intro: 'A family-friendly enquiry form for parents and carers. It asks for enough information to guide the right service without collecting unnecessary sensitive details at first contact.',
+    intro: 'Please provide a brief overview of the support you are looking for. We will contact you to discuss the learner’s needs in more detail. Do not include confidential documents or detailed medical information in this form.',
     html: `
       <form data-form="parent">
-        <div class="form-note"><strong>Parent/carer enquiry:</strong> Please share a brief overview only at this stage. If there is an urgent safeguarding concern or a child is in immediate danger, call 999.</div>
-
         <div class="form-grid">
-          <div class="section-title-small">1. Parent / carer details</div>
-          <div class="field"><label>Your full name *</label><input name="full_name" required placeholder="Full name"></div>
+          <div class="section-title-small">1. Parent or Carer Details</div>
+          <div class="field"><label>Full name *</label><input name="full_name" required placeholder="Your full name"></div>
           <div class="field"><label>Email address *</label><input name="email" required type="email" placeholder="your@email.com"></div>
           <div class="field"><label>Phone number *</label><input name="phone" required placeholder="Contact number"></div>
-          <div class="field"><label>Preferred contact method</label><select name="preferred_contact"><option>Email</option><option>Phone call</option><option>Text message</option><option>No preference</option></select></div>
-          <div class="field"><label>Your relationship to the learner</label><select name="relationship"><option>Parent</option><option>Carer</option><option>Guardian</option><option>Foster carer</option><option>Other</option></select></div>
-          <div class="field"><label>Area / postcode first part</label><input name="area_postcode" placeholder="e.g. SE6, E17, CR0"></div>
+          <div class="field"><label>Preferred contact method *</label><select name="preferred_contact" required><option value="">Select one</option><option>Email</option><option>Phone</option></select></div>
+          <div class="field full"><label>Address *</label><textarea name="address" required placeholder="House/flat number, street, town/city"></textarea></div>
+          <div class="field"><label>Postcode *</label><input name="postcode" required placeholder="e.g. SE6 3EF"></div>
 
-          <div class="section-title-small">2. Learner information</div>
-          <div class="field"><label>Child's first name or initials</label><input name="child_name" placeholder="First name or initials only"></div>
-          <div class="field"><label>Year group / age *</label><input name="year_group" required placeholder="e.g. Year 7 / age 11"></div>
-          <div class="field"><label>Current education situation</label><select name="education_situation"><option>Attending mainstream school</option><option>Part-time timetable</option><option>Out of school</option><option>Awaiting school placement</option><option>Home educated</option><option>Excluded / recently excluded</option><option>Medical needs affecting attendance</option><option>Anxiety affecting attendance</option><option>Not sure / prefer to discuss</option></select></div>
-          <div class="field"><label>Current school involved?</label><select name="school_involved"><option>Yes</option><option>No</option><option>Not currently</option><option>Prefer to discuss</option></select></div>
+          <div class="section-title-small">2. Learner Details</div>
+          <div class="field"><label>Child’s first name or initials *</label><input name="child_name" required placeholder="First name or initials only"></div>
+          <div class="field"><label>Age or year group *</label><input name="year_group" required placeholder="e.g. Year 7 / age 11"></div>
+          <div class="field full"><label>Current education situation *</label><select name="education_situation" required><option value="">Select one</option><option>Attending school</option><option>Part-time timetable</option><option>Not currently attending school</option><option>Home educated</option><option>Awaiting placement</option><option>Other</option></select></div>
 
-          <div class="section-title-small">3. Service you are interested in</div>
+          <div class="section-title-small">3. Support Required</div>
           <div class="field full checkbox-grid">
-            <label class="checkbox-line"><input type="checkbox" name="services" value="SEND tuition"> SEND tuition</label>
-            <label class="checkbox-line"><input type="checkbox" name="services" value="Alternative provision / out-of-school support"> Alternative provision / out-of-school support</label>
             <label class="checkbox-line"><input type="checkbox" name="services" value="One-to-one tuition"> One-to-one tuition</label>
+            <label class="checkbox-line"><input type="checkbox" name="services" value="SEND or SEMH support"> SEND or SEMH support</label>
+            <label class="checkbox-line"><input type="checkbox" name="services" value="Alternative provision or out-of-school support"> Alternative provision or out-of-school support</label>
             <label class="checkbox-line"><input type="checkbox" name="services" value="Online tuition"> Online tuition</label>
             <label class="checkbox-line"><input type="checkbox" name="services" value="In-person tuition"> In-person tuition</label>
-            <label class="checkbox-line"><input type="checkbox" name="services" value="Home education support"> Home education support</label>
-            <label class="checkbox-line"><input type="checkbox" name="services" value="GCSE preparation"> GCSE preparation</label>
+            <label class="checkbox-line"><input type="checkbox" name="services" value="GCSE or Functional Skills support"> GCSE or Functional Skills support</label>
             <label class="checkbox-line"><input type="checkbox" name="services" value="Not sure yet"> Not sure yet</label>
           </div>
 
-          <div class="section-title-small">4. Subject support required</div>
-          <div class="field full checkbox-grid">
-            <label class="checkbox-line"><input type="checkbox" name="subjects" value="English"> English</label>
-            <label class="checkbox-line"><input type="checkbox" name="subjects" value="Maths"> Maths</label>
-            <label class="checkbox-line"><input type="checkbox" name="subjects" value="Science"> Science</label>
-            <label class="checkbox-line"><input type="checkbox" name="subjects" value="Functional Skills"> Functional Skills</label>
-            <label class="checkbox-line"><input type="checkbox" name="subjects" value="Homework / study support"> Homework / study support</label>
-            <label class="checkbox-line"><input type="checkbox" name="subjects" value="Other subject"> Other subject</label>
-          </div>
+          <div class="section-title-small">4. Subjects Required</div>
+          <div class="field full"><label>Subjects required</label><input name="subjects" placeholder="e.g. English, Maths, Science"></div>
 
-          <div class="section-title-small">5. SEND, learning needs and adjustments</div>
-          <div class="field"><label>Does your child have an EHCP?</label><select name="ehcp"><option>Prefer not to say at this stage</option><option>Yes</option><option>No</option><option>In progress</option><option>Not sure</option></select></div>
-          <div class="field"><label>Type of support needed</label><select name="support_type"><option>Not sure / to be discussed</option><option>Academic catch-up</option><option>Confidence building</option><option>Routine and engagement</option><option>SEND-informed teaching</option><option>Exam preparation</option><option>Alternative provision support</option><option>Home education support</option></select></div>
-          <div class="field full checkbox-grid">
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="ADHD"> ADHD</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="ASD / Autism"> ASD / Autism</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="Sensory Processing Difficulties / SPD"> Sensory Processing Difficulties / SPD</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="SEMH / anxiety-related needs"> SEMH / anxiety-related needs</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="Dyslexia or literacy difficulty"> Dyslexia or literacy difficulty</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="Speech, language or communication needs"> Speech, language or communication needs</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="Medical needs"> Medical needs</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="Severe or complex needs"> Severe or complex needs</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="No diagnosed SEND"> No diagnosed SEND</label>
-            <label class="checkbox-line"><input type="checkbox" name="send_needs" value="Prefer to discuss"> Prefer to discuss</label>
-          </div>
-          <div class="field full"><label>Brief overview of support needed</label><textarea name="overview" placeholder="Briefly tell us what support you are looking for, what your child finds difficult, and what usually helps them learn. Please avoid sharing unnecessary sensitive details at this stage."></textarea></div>
+          <div class="section-title-small">5. Brief Enquiry</div>
+          <div class="field full"><label>Please briefly describe the support you are looking for *</label><textarea name="overview" required placeholder="Tell us about the learner’s current situation, the main support required and anything that would help us respond appropriately."></textarea></div>
 
-          <div class="section-title-small">6. Tuition preferences</div>
-          <div class="field"><label>Preferred delivery method</label><select name="delivery_method"><option>Online</option><option>In-person</option><option>Hybrid</option><option>Not sure yet</option></select></div>
-          <div class="field"><label>Preferred session frequency</label><select name="session_frequency"><option>Not sure yet</option><option>1 session per week</option><option>2 sessions per week</option><option>3+ sessions per week</option><option>Short-term intensive support</option></select></div>
-          <div class="field"><label>Preferred days/times</label><input name="preferred_times" placeholder="e.g. weekdays after 4pm, mornings, weekends"></div>
-          <div class="field"><label>When would you like support to start?</label><select name="start_preference"><option>As soon as possible</option><option>Within 2 weeks</option><option>Within 1 month</option><option>Not sure yet</option></select></div>
-
-          <div class="section-title-small">7. Final message</div>
-          <div class="field full"><label>Anything else you would like us to know?</label><textarea name="extra_message" placeholder="You can add any key information that will help us understand your enquiry. If sensitive documents are needed, we will request them securely later."></textarea></div>
+          <div class="section-title-small">6. Tuition Preferences</div>
+          <div class="field"><label>Preferred delivery method *</label><select name="delivery_method" required><option value="">Select one</option><option>Online</option><option>In person</option><option>Either</option><option>Not sure</option></select></div>
+          <div class="field"><label>Preferred days or times</label><input name="preferred_times" placeholder="e.g. weekdays after 4pm, mornings, weekends"></div>
+          <div class="field"><label>Preferred start date</label><input name="start_preference" type="date"></div>
         </div>
 
-        <div class="form-note">For privacy and safeguarding, the parent enquiry form should not ask for full medical records, full address, detailed safeguarding history or document uploads at first contact. These can be requested later through a secure process if needed.</div>
-        <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" value="true" required> <span>I confirm that I am the parent/carer or have responsibility to make this enquiry, and I understand that Polygon Pedagogs will use this information to respond to my enquiry in line with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
+        <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" value="true" required> <span>I confirm that I am the learner’s parent, carer or authorised representative. I understand that Polygon Pedagogs will use this information to respond to my enquiry in accordance with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
         <div class="form-status" hidden></div>
         <div class="submit-row">
           <button class="btn btn-outline" type="button" onclick="closeModal()">Cancel</button>
-          <button class="btn btn-primary" type="submit">Submit Parent Enquiry</button>
+          <button class="btn btn-primary" type="submit">Submit Enquiry</button>
         </div>
       </form>`
   },
@@ -166,9 +114,6 @@ const templates = {
     intro: 'Detailed tutor recruitment form for Polygon Pedagogs. This supports safer recruitment by collecting role suitability, experience, SEND knowledge, availability, references and declarations.',
     html: `
       <form data-form="tutor" enctype="multipart/form-data">
-        <div class="urgent-note"><strong>Safer recruitment note:</strong> Submission of this form does not confirm appointment. Any tutor role with Polygon Pedagogs is subject to suitability review, interview, identity checks, right-to-work checks, references, qualification checks, appropriate DBS checks, safeguarding onboarding and agreement to our policies.</div>
-        <div class="form-note">Please provide accurate information. Sensitive documents should only be uploaded where requested and relevant.</div>
-
         <div class="form-grid">
           <div class="section-title-small">1. Personal details</div>
           <div class="field"><label>Full legal name *</label><input name="legal_name" required placeholder="As shown on official ID"></div>
@@ -297,7 +242,7 @@ const templates = {
         <div class="check"><span class="tick">✓</span>Concerns should be recorded and escalated appropriately.</div>
       </div>
       <div class="submit-row">
-        <a class="btn btn-secondary" href="safeguarding.html">Open Safeguarding Page</a>
+        <a class="btn btn-secondary" href="safeguarding.html">Open Our Policies</a>
         <button class="btn btn-primary" onclick="closeModal()">Close</button>
       </div>`
   },

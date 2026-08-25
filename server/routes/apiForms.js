@@ -27,39 +27,20 @@ router.post('/referral', (req, res) => {
     try {
       const body = req.body || {};
       const payload = {
-        referrer_name: cleanString(body.referrer_name),
-        job_title: cleanString(body.job_title),
-        organisation: cleanString(body.organisation),
-        work_email: cleanString(body.work_email),
-        phone: cleanString(body.phone),
-        referral_source: cleanString(body.referral_source),
         learner_ref: cleanString(body.learner_ref),
         year_group: cleanString(body.year_group),
-        education_status: cleanString(body.education_status),
-        delivery_method: cleanString(body.delivery_method),
         support_types: asArray(body.support_types),
         subjects: asArray(body.subjects),
         hours_per_week: cleanString(body.hours_per_week),
         preferred_start: cleanString(body.preferred_start),
-        ehcp_status: cleanString(body.ehcp_status),
         main_need: cleanString(body.main_need),
         learner_profile: cleanString(body.learner_profile),
-        safeguarding_concerns: cleanString(body.safeguarding_concerns),
-        risk_assessment: cleanString(body.risk_assessment),
-        risk_info: cleanString(body.risk_info),
         privacy_confirmed: body.privacy_confirmed === 'true' || body.privacy_confirmed === 'on',
       };
 
       const missing = requireFields(payload, [
-        'referrer_name',
-        'job_title',
-        'organisation',
-        'work_email',
-        'phone',
-        'referral_source',
         'learner_ref',
         'year_group',
-        'education_status',
       ]);
       if (missing.length || !payload.privacy_confirmed) {
         return res.status(400).json({
@@ -71,8 +52,8 @@ router.post('/referral', (req, res) => {
       const result = await persistAndNotify({
         type: 'referral',
         payload,
-        submitterName: payload.referrer_name,
-        submitterEmail: payload.work_email,
+        submitterName: payload.learner_ref,
+        submitterEmail: '',
         files: req.files || [],
       });
 
@@ -92,27 +73,33 @@ router.post('/parent-enquiry', express.json(), async (req, res) => {
       email: cleanString(body.email),
       phone: cleanString(body.phone),
       preferred_contact: cleanString(body.preferred_contact),
-      relationship: cleanString(body.relationship),
-      area_postcode: cleanString(body.area_postcode),
+      address: cleanString(body.address),
+      postcode: cleanString(body.postcode),
       child_name: cleanString(body.child_name),
       year_group: cleanString(body.year_group),
       education_situation: cleanString(body.education_situation),
-      school_involved: cleanString(body.school_involved),
       services: asArray(body.services),
-      subjects: asArray(body.subjects),
-      ehcp: cleanString(body.ehcp),
-      support_type: cleanString(body.support_type),
-      send_needs: asArray(body.send_needs),
+      subjects: cleanString(body.subjects),
       overview: cleanString(body.overview),
       delivery_method: cleanString(body.delivery_method),
-      session_frequency: cleanString(body.session_frequency),
       preferred_times: cleanString(body.preferred_times),
       start_preference: cleanString(body.start_preference),
-      extra_message: cleanString(body.extra_message),
       privacy_confirmed: body.privacy_confirmed === true || body.privacy_confirmed === 'true' || body.privacy_confirmed === 'on',
     };
 
-    const missing = requireFields(payload, ['full_name', 'email', 'phone', 'year_group']);
+    const missing = requireFields(payload, [
+      'full_name',
+      'email',
+      'phone',
+      'preferred_contact',
+      'address',
+      'postcode',
+      'child_name',
+      'year_group',
+      'education_situation',
+      'overview',
+      'delivery_method',
+    ]);
     if (missing.length || !payload.privacy_confirmed) {
       return res.status(400).json({
         error: 'Please complete all required fields and confirm privacy consent.',
