@@ -45,7 +45,7 @@ function formatPayload(payload) {
 async function notifySubmission({ type, id, payload, submitterName, submitterEmail, files = [] }) {
   const label = TYPE_LABELS[type] || type;
   const to = pickRecipient(type);
-  const subject = `[Polygon Pedagogs] New ${label} — ${id.slice(0, 8)}`;
+  const subject = `[Polygon Pedagogues] New ${label} — ${id.slice(0, 8)}`;
   const body = [
     `New ${label} received.`,
     '',

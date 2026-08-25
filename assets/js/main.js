@@ -51,7 +51,7 @@ const templates = {
           <div class="field"><label>Main area of need</label><select name="main_need"><option>Not sure / to be discussed</option><option>ADHD</option><option>ASD / Autism</option><option>Sensory Processing Difficulties / SPD</option><option>SEMH</option><option>Speech, language and communication needs</option><option>Dyslexia / literacy difficulty</option><option>Severe or complex needs</option><option>Medical needs</option><option>Other</option></select></div>
           <div class="field full"><label>Brief learner profile</label><textarea name="learner_profile" placeholder="Please summarise strengths, barriers to learning, SEND needs, communication needs, sensory needs, triggers, routines or adjustments that may help."></textarea></div>
         </div>
-        <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" value="true" required> <span>I confirm that I have authority to share this information for the purpose of reviewing and arranging educational provision, and I understand that Polygon Pedagogs will process the information in line with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
+        <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" value="true" required> <span>I confirm that I have authority to share this information for the purpose of reviewing and arranging educational provision, and I understand that Polygon Pedagogues will process the information in line with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
         <div class="form-status" hidden></div>
         <div class="submit-row">
           <button class="btn btn-outline" type="button" onclick="closeModal()">Cancel</button>
@@ -101,7 +101,7 @@ const templates = {
           <div class="field"><label>Preferred start date</label><input name="start_preference" type="date"></div>
         </div>
 
-        <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" value="true" required> <span>I confirm that I am the learner’s parent, carer or authorised representative. I understand that Polygon Pedagogs will use this information to respond to my enquiry in accordance with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
+        <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" value="true" required> <span>I confirm that I am the learner’s parent, carer or authorised representative. I understand that Polygon Pedagogues will use this information to respond to my enquiry in accordance with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.</span></label>
         <div class="form-status" hidden></div>
         <div class="submit-row">
           <button class="btn btn-outline" type="button" onclick="closeModal()">Cancel</button>
@@ -111,7 +111,7 @@ const templates = {
   },
   tutor: {
     title: 'Tutor Application',
-    intro: 'Detailed tutor recruitment form for Polygon Pedagogs. This supports safer recruitment by collecting role suitability, experience, SEND knowledge, availability, references and declarations.',
+    intro: 'Detailed tutor recruitment form for Polygon Pedagogues. This supports safer recruitment by collecting role suitability, experience, SEND knowledge, availability, references and declarations.',
     html: `
       <form data-form="tutor" enctype="multipart/form-data">
         <div class="form-grid">
@@ -219,8 +219,8 @@ const templates = {
           <label class="privacy-check field full"><input type="checkbox" name="decl_accurate" value="true" required> <span>I confirm that the information provided is accurate and complete to the best of my knowledge.</span></label>
           <label class="privacy-check field full"><input type="checkbox" name="decl_checks" value="true" required> <span>I understand that any appointment is subject to safer recruitment checks, including identity, right-to-work, references, qualification checks and appropriate DBS checks.</span></label>
           <label class="privacy-check field full"><input type="checkbox" name="decl_disclose" value="true" required> <span>I understand that I must disclose any information relevant to my suitability to work with children during the safer recruitment process.</span></label>
-          <label class="privacy-check field full"><input type="checkbox" name="decl_policies" value="true" required> <span>I agree to follow Polygon Pedagogs safeguarding procedures, tutor code of conduct, professional boundaries, reporting expectations and data protection requirements if appointed.</span></label>
-          <label class="privacy-check field full"><input type="checkbox" name="decl_privacy" value="true" required> <span>I understand that Polygon Pedagogs will process my application data in line with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a> and recruitment procedures.</span></label>
+          <label class="privacy-check field full"><input type="checkbox" name="decl_policies" value="true" required> <span>I agree to follow Polygon Pedagogues safeguarding procedures, tutor code of conduct, professional boundaries, reporting expectations and data protection requirements if appointed.</span></label>
+          <label class="privacy-check field full"><input type="checkbox" name="decl_privacy" value="true" required> <span>I understand that Polygon Pedagogues will process my application data in line with its <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a> and recruitment procedures.</span></label>
         </div>
 
         <div class="form-status" hidden></div>
@@ -235,7 +235,7 @@ const templates = {
     intro: 'If you need to raise a safeguarding concern, use the contact details on the safeguarding page. This is not an emergency form.',
     html: `
       <div class="form-note"><strong>If a child is in immediate danger, call 999.</strong></div>
-      <p style="color:var(--muted);margin-bottom:14px;">Polygon Pedagogs is committed to promoting the safety and welfare of children and young people who access our services. Tutors are expected to follow safeguarding procedures, maintain professional boundaries and report concerns appropriately.</p>
+      <p style="color:var(--muted);margin-bottom:14px;">Polygon Pedagogues is committed to promoting the safety and welfare of children and young people who access our services. Tutors are expected to follow safeguarding procedures, maintain professional boundaries and report concerns appropriately.</p>
       <div class="feature-list">
         <div class="check"><span class="tick">✓</span>Designated Safeguarding Lead details should appear on the safeguarding page.</div>
         <div class="check"><span class="tick">✓</span>Safeguarding email and phone number should be clearly visible.</div>

@@ -1,6 +1,6 @@
-# Polygon Pedagogs
+# Polygon Pedagogues
 
-Multi-page website for Polygon Pedagogs with working form submissions, private file uploads, email notifications, and an admin inbox.
+Multi-page website for Polygon Pedagogues with working form submissions, private file uploads, email notifications, and an admin inbox.
 
 ## Quick start
 

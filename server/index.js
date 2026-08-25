@@ -68,6 +68,6 @@ app.use((err, _req, res, _next) => {
 });
 
 app.listen(config.port, () => {
-  console.log(`Polygon Pedagogs running at http://localhost:${config.port}`);
+  console.log(`Polygon Pedagogues running at http://localhost:${config.port}`);
   console.log(`Admin inbox: http://localhost:${config.port}/admin/`);
 });

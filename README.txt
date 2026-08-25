@@ -1,4 +1,4 @@
-Polygon Pedagogs website
+Polygon Pedagogues website
 
 This project now includes a working Node.js backend.
 

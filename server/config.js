@@ -18,7 +18,7 @@ const config = {
     secure: process.env.SMTP_SECURE === 'true',
     user: process.env.SMTP_USER || '',
     pass: process.env.SMTP_PASS || '',
-    from: process.env.MAIL_FROM || 'Polygon Pedagogs <noreply@example.com>',
+    from: process.env.MAIL_FROM || 'Polygon Pedagogues <noreply@example.com>',
     to: {
       general: process.env.MAIL_TO_GENERAL || '',
       referrals: process.env.MAIL_TO_REFERRALS || '',

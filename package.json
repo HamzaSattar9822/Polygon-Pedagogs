@@ -1,7 +1,7 @@
 {
   "name": "polygon-pedagogs",
   "version": "1.0.0",
-  "description": "Polygon Pedagogs website with secure form handling and admin inbox",
+  "description": "Polygon Pedagogues website with secure form handling and admin inbox",
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
