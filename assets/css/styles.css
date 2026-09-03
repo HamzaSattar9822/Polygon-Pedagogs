@@ -814,6 +814,11 @@
       font-size: 0.94rem;
     }
 
+    footer .contact-details li,
+    .page-panel .contact-details li {
+      white-space: nowrap;
+    }
+
     footer a:hover {
       color: #bce7ef;
     }
