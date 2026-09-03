@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutor Portal | Polygon Pedagogues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="tutor.css" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png?v=6" />
+</head>
+<body class="tutor-body">
+  <div id="loginView" class="tutor-login">
+    <form id="loginForm" class="tutor-login-card" aria-labelledby="loginHeading">
+      <div class="tutor-login-brand">
+        <img src="/assets/images/logo.png?v=6" alt="Polygon Pedagogues" width="220" height="62" />
+      </div>
+      <h1 id="loginHeading">Tutor sign in</h1>
+      <p class="tutor-lede">Mark attendance and add a short daily note for your students.</p>
+      <label for="loginUsername">Username</label>
+      <input id="loginUsername" name="username" autocomplete="username" required />
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
+      <p id="loginError" class="tutor-alert tutor-alert-error" role="alert" hidden></p>
+      <button class="pp-btn pp-btn-primary pp-btn-block" type="submit">Sign in</button>
+    </form>
+  </div>
+
+  <div id="appView" class="tutor-app" hidden>
+    <header class="tutor-top">
+      <div class="tutor-top-brand">
+        <img src="/assets/images/logo.png?v=6" alt="Polygon Pedagogues" width="180" height="50" />
+        <div>
+          <span class="tutor-top-eyebrow">Tutor portal</span>
+          <strong id="tutorName">Tutor</strong>
+        </div>
+      </div>
+      <button class="pp-btn pp-btn-ghost" type="button" id="logoutBtn">Sign out</button>
+    </header>
+
+    <main class="tutor-main">
+      <section id="dashboardView" class="tutor-panel">
+        <div class="tutor-panel-head">
+          <div>
+            <h1>Your students</h1>
+            <p>Choose a student, then mark attendance.</p>
+          </div>
+          <label class="tutor-date-field" for="attendanceDate">Date
+            <input type="date" id="attendanceDate" />
+          </label>
+        </div>
+        <p id="dashboardError" class="tutor-alert tutor-alert-error" role="alert" hidden></p>
+        <div id="dashboardEmpty" class="tutor-empty-state" hidden>
+          <h2>No students assigned</h2>
+          <p>Ask an administrator to assign students to your account.</p>
+        </div>
+        <ul id="studentList" class="tutor-student-list"></ul>
+      </section>
+
+      <section id="formView" class="tutor-panel" hidden>
+        <button type="button" class="tutor-back" id="backBtn">← Back to students</button>
+        <div class="tutor-panel-head">
+          <div>
+            <h1 id="formStudentName">Student</h1>
+            <p id="formDateLabel">Attendance for today</p>
+          </div>
+        </div>
+
+        <form id="attendanceForm" class="tutor-form">
+          <input type="hidden" id="studentId" />
+
+          <section class="tutor-step" aria-labelledby="stepStatus">
+            <div class="tutor-step-label" id="stepStatus"><span>1</span> Attendance status</div>
+            <fieldset class="tutor-status-group">
+              <legend class="visually-hidden">Attendance status</legend>
+              <div class="tutor-status-options">
+                <label class="tutor-status-option">
+                  <input type="radio" name="status" value="present" required />
+                  <span>
+                    <strong>Present</strong>
+                    <small>Attended as expected</small>
+                  </span>
+                </label>
+                <label class="tutor-status-option">
+                  <input type="radio" name="status" value="absent" />
+                  <span>
+                    <strong>Absent</strong>
+                    <small>Did not attend</small>
+                  </span>
+                </label>
+                <label class="tutor-status-option">
+                  <input type="radio" name="status" value="late" />
+                  <span>
+                    <strong>Late</strong>
+                    <small>Arrived after start</small>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="tutor-step" aria-labelledby="stepTime">
+            <div class="tutor-step-label" id="stepTime"><span>2</span> Time</div>
+            <div class="tutor-time-grid">
+              <label for="startTime">Arrival time
+                <input type="time" id="startTime" name="start_time" />
+              </label>
+              <label for="endTime">Departure time
+                <input type="time" id="endTime" name="end_time" />
+              </label>
+            </div>
+            <p class="tutor-hint">Times are optional when the student is absent.</p>
+          </section>
+
+          <section class="tutor-step" aria-labelledby="stepReport">
+            <div class="tutor-step-label" id="stepReport"><span>3</span> Daily report</div>
+            <label class="tutor-remarks" for="remarks">
+              <span class="visually-hidden">Daily report / remarks</span>
+              <textarea id="remarks" name="remarks" rows="4" maxlength="2000" placeholder="Optional: brief note about today’s session"></textarea>
+            </label>
+          </section>
+
+          <p id="formError" class="tutor-alert tutor-alert-error" role="alert" hidden></p>
+          <p id="formSuccess" class="tutor-alert tutor-alert-success" role="status" hidden></p>
+
+          <button class="pp-btn pp-btn-primary pp-btn-block tutor-submit" type="submit" id="submitBtn">Submit Attendance</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="tutor.js"></script>
+</body>
+</html>

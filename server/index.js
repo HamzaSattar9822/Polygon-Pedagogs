@@ -6,6 +6,8 @@ const config = require('./config');
 const { getDb, ensureDirs } = require('./db');
 const apiForms = require('./routes/apiForms');
 const adminRoutes = require('./routes/admin');
+const adminAttendanceRoutes = require('./routes/adminAttendance');
+const tutorRoutes = require('./routes/tutor');
 
 ensureDirs();
 getDb();
@@ -30,12 +32,15 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/forms', apiForms);
 app.use('/api/admin', adminRoutes);
+app.use('/api/admin', adminAttendanceRoutes);
+app.use('/api/tutor', tutorRoutes);
 
 app.use('/uploads', (_req, res) => {
   res.status(403).json({ error: 'Forbidden' });
 });
 
 app.use('/admin', express.static(path.join(config.rootDir, 'admin'), { index: 'index.html' }));
+app.use('/tutor', express.static(path.join(config.rootDir, 'tutor'), { index: 'index.html' }));
 app.use('/assets', express.static(path.join(config.rootDir, 'assets')));
 
 const pages = [
@@ -70,4 +75,5 @@ app.use((err, _req, res, _next) => {
 app.listen(config.port, () => {
   console.log(`Polygon Pedagogues running at http://localhost:${config.port}`);
   console.log(`Admin inbox: http://localhost:${config.port}/admin/`);
+  console.log(`Tutor portal: http://localhost:${config.port}/tutor/`);
 });

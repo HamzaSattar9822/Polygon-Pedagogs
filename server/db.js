@@ -49,10 +49,73 @@ function createDb() {
       expires_at TEXT NOT NULL
     );
 
+    CREATE TABLE IF NOT EXISTS users (
+      id TEXT PRIMARY KEY,
+      username TEXT NOT NULL UNIQUE COLLATE NOCASE,
+      password_hash TEXT NOT NULL,
+      full_name TEXT NOT NULL,
+      email TEXT,
+      role TEXT NOT NULL CHECK(role IN ('tutor')),
+      active INTEGER NOT NULL DEFAULT 1 CHECK(active IN (0, 1)),
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS students (
+      id TEXT PRIMARY KEY,
+      full_name TEXT NOT NULL,
+      notes TEXT,
+      active INTEGER NOT NULL DEFAULT 1 CHECK(active IN (0, 1)),
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS tutor_student_assignments (
+      id TEXT PRIMARY KEY,
+      tutor_id TEXT NOT NULL,
+      student_id TEXT NOT NULL,
+      active INTEGER NOT NULL DEFAULT 1 CHECK(active IN (0, 1)),
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(tutor_id, student_id),
+      FOREIGN KEY (tutor_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+    );
+
+    CREATE TABLE IF NOT EXISTS attendance_records (
+      id TEXT PRIMARY KEY,
+      student_id TEXT NOT NULL,
+      tutor_id TEXT NOT NULL,
+      attendance_date TEXT NOT NULL,
+      status TEXT NOT NULL CHECK(status IN ('present', 'absent', 'late')),
+      start_time TEXT,
+      end_time TEXT,
+      remarks TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      UNIQUE(student_id, tutor_id, attendance_date),
+      FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+      FOREIGN KEY (tutor_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+
+    CREATE TABLE IF NOT EXISTS tutor_sessions (
+      token TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      expires_at TEXT NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+
     CREATE INDEX IF NOT EXISTS idx_submissions_type ON submissions(type);
     CREATE INDEX IF NOT EXISTS idx_submissions_status ON submissions(status);
     CREATE INDEX IF NOT EXISTS idx_submissions_created ON submissions(created_at DESC);
     CREATE INDEX IF NOT EXISTS idx_uploads_submission ON uploads(submission_id);
+    CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
+    CREATE INDEX IF NOT EXISTS idx_assignments_tutor ON tutor_student_assignments(tutor_id);
+    CREATE INDEX IF NOT EXISTS idx_assignments_student ON tutor_student_assignments(student_id);
+    CREATE INDEX IF NOT EXISTS idx_attendance_date ON attendance_records(attendance_date DESC);
+    CREATE INDEX IF NOT EXISTS idx_attendance_tutor ON attendance_records(tutor_id);
+    CREATE INDEX IF NOT EXISTS idx_attendance_student ON attendance_records(student_id);
+    CREATE INDEX IF NOT EXISTS idx_tutor_sessions_user ON tutor_sessions(user_id);
   `);
 
   return db;

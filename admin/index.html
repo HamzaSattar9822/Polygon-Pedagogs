@@ -3,23 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Inbox | Polygon Pedagogues</title>
+  <title>Admin | Polygon Pedagogues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <link rel="stylesheet" href="admin.css" />
   <link rel="icon" type="image/png" href="/assets/images/favicon.png?v=6" />
 </head>
 <body class="admin-body">
   <div id="loginView" class="admin-login">
-    <form id="loginForm" class="admin-login-card">
+    <form id="loginForm" class="admin-login-card" aria-labelledby="loginHeading">
       <div class="admin-login-brand">
         <img src="/assets/images/logo.png?v=6" alt="Polygon Pedagogues" width="220" height="62" />
       </div>
-      <h1>Admin inbox</h1>
-      <p>Sign in to review referrals, enquiries and tutor applications.</p>
-      <label>Username<input name="username" autocomplete="username" required /></label>
-      <label>Password<input name="password" type="password" autocomplete="current-password" required /></label>
-      <p id="loginError" class="admin-error" hidden></p>
-      <button class="btn btn-primary" type="submit">Sign in</button>
+      <h1 id="loginHeading">Admin sign in</h1>
+      <p class="admin-lede">Use your admin username and password to continue.</p>
+      <label for="loginUsername">Username</label>
+      <input id="loginUsername" name="username" autocomplete="username" required />
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
+      <p id="loginError" class="admin-alert admin-alert-error" role="alert" hidden></p>
+      <button class="pp-btn pp-btn-primary pp-btn-block" type="submit">Sign in</button>
     </form>
   </div>
 
@@ -27,15 +32,28 @@
     <header class="admin-top">
       <div class="admin-top-brand">
         <img src="/assets/images/logo.png?v=6" alt="Polygon Pedagogues" width="180" height="50" />
-        <span>Submission inbox</span>
+        <div>
+          <span class="admin-top-eyebrow">Admin</span>
+          <strong>Control panel</strong>
+        </div>
       </div>
-      <button class="btn btn-outline" type="button" id="logoutBtn">Sign out</button>
+      <nav class="admin-nav" aria-label="Admin sections">
+        <button type="button" class="admin-nav-btn active" data-tab="inbox">Inbox</button>
+        <button type="button" class="admin-nav-btn" data-tab="people">People</button>
+        <button type="button" class="admin-nav-btn" data-tab="attendance">Attendance</button>
+      </nav>
+      <button class="pp-btn pp-btn-ghost" type="button" id="logoutBtn">Sign out</button>
     </header>
 
-    <div class="admin-layout">
-      <aside class="admin-sidebar">
-        <div class="admin-filters">
-          <label>Type
+    <section id="tab-inbox" class="admin-tab">
+      <div class="admin-layout">
+        <aside class="admin-sidebar">
+          <div class="admin-section-intro">
+            <h2>Inbox</h2>
+            <p>Find and open a submission.</p>
+          </div>
+          <div class="admin-filters">
+            <label for="filterType">Type</label>
             <select id="filterType">
               <option value="">All types</option>
               <option value="referral">Referrals</option>
@@ -43,27 +61,166 @@
               <option value="tutor">Tutor applications</option>
               <option value="contact">Contact</option>
             </select>
-          </label>
-          <label>Status
+            <label for="filterStatus">Status</label>
             <select id="filterStatus">
               <option value="">All statuses</option>
               <option value="new">New</option>
               <option value="in_progress">In progress</option>
               <option value="closed">Closed</option>
             </select>
-          </label>
-          <label>Search
+            <label for="filterQ">Search</label>
             <input id="filterQ" type="search" placeholder="Name, email or ID" />
-          </label>
-          <button class="btn btn-secondary" type="button" id="refreshBtn">Refresh</button>
-        </div>
-        <ul id="submissionList" class="admin-list"></ul>
-      </aside>
+            <button class="pp-btn pp-btn-secondary pp-btn-block" type="button" id="refreshBtn">Refresh list</button>
+          </div>
+          <ul id="submissionList" class="admin-list"></ul>
+        </aside>
 
-      <main class="admin-detail" id="detailPane">
-        <div class="admin-empty">Select a submission to view details.</div>
-      </main>
-    </div>
+        <main class="admin-detail" id="detailPane">
+          <div class="admin-empty-state">
+            <h2>No submission selected</h2>
+            <p>Choose an item from the list to read the details.</p>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <section id="tab-people" class="admin-tab" hidden>
+      <div class="admin-module">
+        <div class="admin-page-head">
+          <div>
+            <h2>People</h2>
+            <p>Create tutors and students, then link them together.</p>
+          </div>
+        </div>
+
+        <div class="admin-module-grid">
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h3>1. Add a tutor</h3>
+              <p>They will sign in at the tutor portal.</p>
+            </div>
+            <form id="tutorForm" class="admin-form">
+              <label for="tutorFullName">Full name</label>
+              <input id="tutorFullName" name="full_name" required />
+              <label for="tutorUsername">Username</label>
+              <input id="tutorUsername" name="username" required minlength="3" autocomplete="off" />
+              <label for="tutorEmail">Email <span class="optional">(optional)</span></label>
+              <input id="tutorEmail" name="email" type="email" />
+              <label for="tutorPassword">Password</label>
+              <input id="tutorPassword" name="password" type="password" required minlength="6" autocomplete="new-password" />
+              <p id="tutorFormError" class="admin-alert admin-alert-error" role="alert" hidden></p>
+              <p id="tutorFormSuccess" class="admin-alert admin-alert-success" role="status" hidden></p>
+              <button class="pp-btn pp-btn-primary" type="submit">Create tutor</button>
+            </form>
+            <div class="admin-list-block">
+              <h4>Tutors</h4>
+              <ul id="tutorList" class="admin-simple-list"></ul>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h3>2. Add a student</h3>
+              <p>Keep notes short and useful.</p>
+            </div>
+            <form id="studentForm" class="admin-form">
+              <label for="studentFullName">Full name</label>
+              <input id="studentFullName" name="full_name" required />
+              <label for="studentNotes">Notes <span class="optional">(optional)</span></label>
+              <textarea id="studentNotes" name="notes" rows="3"></textarea>
+              <p id="studentFormError" class="admin-alert admin-alert-error" role="alert" hidden></p>
+              <p id="studentFormSuccess" class="admin-alert admin-alert-success" role="status" hidden></p>
+              <button class="pp-btn pp-btn-primary" type="submit">Create student</button>
+            </form>
+            <div class="admin-list-block">
+              <h4>Students</h4>
+              <ul id="studentList" class="admin-simple-list"></ul>
+            </div>
+          </div>
+
+          <div class="admin-card admin-card-wide">
+            <div class="admin-card-head">
+              <h3>3. Assign student to tutor</h3>
+              <p>A tutor only sees students assigned to them.</p>
+            </div>
+            <form id="assignForm" class="admin-form admin-form-inline">
+              <div>
+                <label for="assignTutor">Tutor</label>
+                <select name="tutor_id" id="assignTutor" required></select>
+              </div>
+              <div>
+                <label for="assignStudent">Student</label>
+                <select name="student_id" id="assignStudent" required></select>
+              </div>
+              <button class="pp-btn pp-btn-primary" type="submit">Assign</button>
+            </form>
+            <p id="assignFormError" class="admin-alert admin-alert-error" role="alert" hidden></p>
+            <p id="assignFormSuccess" class="admin-alert admin-alert-success" role="status" hidden></p>
+            <div class="admin-list-block">
+              <h4>Active assignments</h4>
+              <ul id="assignmentList" class="admin-simple-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-attendance" class="admin-tab" hidden>
+      <div class="admin-module">
+        <div class="admin-page-head">
+          <div>
+            <h2>Attendance</h2>
+            <p>Filter records by date, tutor, student, or status.</p>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-filters admin-filters-inline">
+            <div>
+              <label for="attDate">Date</label>
+              <input type="date" id="attDate" />
+            </div>
+            <div>
+              <label for="attTutor">Tutor</label>
+              <select id="attTutor"><option value="">All tutors</option></select>
+            </div>
+            <div>
+              <label for="attStudent">Student</label>
+              <select id="attStudent"><option value="">All students</option></select>
+            </div>
+            <div>
+              <label for="attStatus">Status</label>
+              <select id="attStatus">
+                <option value="">All statuses</option>
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+                <option value="late">Late</option>
+              </select>
+            </div>
+            <div class="admin-filter-action">
+              <button class="pp-btn pp-btn-secondary pp-btn-block" type="button" id="attRefreshBtn">Refresh</button>
+            </div>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table" id="attendanceTable">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Student</th>
+                  <th scope="col">Tutor</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Arrival</th>
+                  <th scope="col">Departure</th>
+                  <th scope="col">Daily report</th>
+                </tr>
+              </thead>
+              <tbody id="attendanceBody">
+                <tr><td colspan="7">No attendance records yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <script src="admin.js"></script>
