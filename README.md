@@ -1,6 +1,36 @@
 # Polygon Pedagogues
 
-Multi-page website for Polygon Pedagogues with working form submissions, private file uploads, email notifications, an admin inbox, and a tutor attendance portal.
+Multi-page tutoring site with working forms, private uploads, email alerts, an admin inbox, and a tutor attendance portal. Built for Polygon Pedagogues operations (referrals, parent enquiries, tutor applications, safeguarding pages).
+
+Live (Render): https://polygon-pedagogs.onrender.com
+
+## Features
+
+- Referral, parent/carer, tutor application, and contact forms
+- SQLite storage (`data/polygon.db`) and private `uploads/` (not public)
+- Admin inbox: filter, status, download attachments
+- Tutor portal: Present / Absent / Late, times, remarks
+- Optional SMTP notifications (falls back to console logs)
+
+## Architecture
+
+```mermaid
+flowchart TB
+  Public["Public pages HTML"]
+  Tutor["Tutor portal /tutor"]
+  Admin["Admin /admin"]
+  Server["Node Express server"]
+  DB[(SQLite)]
+  Files["uploads/"]
+  Mail["SMTP optional"]
+
+  Public --> Server
+  Tutor --> Server
+  Admin --> Server
+  Server --> DB
+  Server --> Files
+  Server --> Mail
+```
 
 ## Quick start
 
@@ -10,56 +40,23 @@ npm install
 npm start
 ```
 
-Open:
 - Site: http://localhost:3000
 - Admin: http://localhost:3000/admin/
-- Tutor portal: http://localhost:3000/tutor/
+- Tutor: http://localhost:3000/tutor/
 
-Default admin login (change in `.env` before production):
-- Username: `admin`
-- Password: `change-me-now`
-
-Tutor accounts are created by an admin under **Tutors & Students**.
-
-## What works
-
-- Professional referral form (with document uploads)
-- Parent / carer enquiry form
-- Tutor application form (CV and supporting documents)
-- General contact form
-- Submissions saved to SQLite (`data/polygon.db`)
-- Uploads stored privately in `uploads/` (not publicly downloadable)
-- Admin inbox to filter, view, update status, and download files
-- Tutor attendance portal (Present / Absent / Late, times, daily remarks)
-- Admin tools to create tutors & students, assign students, and review attendance
-- Optional SMTP email alerts (logs to console if SMTP is not configured)
-- Privacy Notice, Cookie Notice, and cookie banner
+Default admin (change before any real use): `admin` / `change-me-now`
 
 ## Tutor attendance flow
 
-1. Admin creates a tutor account and students, then assigns students to the tutor
-2. Tutor signs in at `/tutor/`
-3. Tutor selects a student → marks Present / Absent / Late → enters times → optional remarks → Submit Attendance
-4. Re-submitting the same day updates the existing record (no duplicates)
-5. Admin reviews records under the Attendance tab (filter by date, tutor, student)
-
-## Environment
-
-Copy `.env.example` to `.env` and set:
-
-- `ADMIN_USERNAME` / `ADMIN_PASSWORD` / `SESSION_SECRET`
-- SMTP settings and `MAIL_TO_*` addresses when you want live email
-
-Contact details on the public pages (emails, phone, location, DSL) are still placeholders and can be filled in later.
+1. Admin creates tutors and students, then assigns them
+2. Tutor signs in and marks attendance for a student
+3. Same-day re-submit updates the existing record
+4. Admin reviews under Attendance filters
 
 ## Scripts
 
-- `npm start` — run the server
-- `npm run dev` — run with Node watch mode
-- `npm run init-db` — initialise the database folders/tables
+- `npm start` - production-style server
+- `npm run dev` - Node watch mode
+- `npm run init-db` - create folders/tables
 
-## Notes
-
-- Do not commit `.env`, `data/`, or `uploads/`
-- Review safeguarding and privacy wording with a competent professional before public launch
-- Add final policy PDFs under Safeguarding when ready
+Do not commit `.env`, `data/`, or `uploads/`. Have a professional review safeguarding copy before a public launch.
